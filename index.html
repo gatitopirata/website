@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gatito Pirata Technologies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --teal: #0E3B43;
+      --teal-deep: #0A2C32;
+      --gold: #F2B705;
+      --coral: #F25C54;
+      --cream: #FBF3E4;
+      --ink: #15211F;
+      --line: rgba(15, 33, 31, 0.14);
+    }
+
+    [data-lang="es"] [data-en] {
+      display: none;
+    }
+
+    [data-lang="en"] [data-es] {
+      display: none;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    .display {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* focus visibility */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--coral);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    /* ===== Header ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 243, 228, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Baloo 2';
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--teal-deep);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--coral);
+      transition: width .2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .lang-toggle {
+      display: flex;
+      border: 2px solid var(--teal);
+      border-radius: 999px;
+      overflow: hidden;
+      font-family: 'Baloo 2';
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .lang-toggle button {
+      background: transparent;
+      border: none;
+      padding: 7px 14px;
+      cursor: pointer;
+      color: var(--teal-deep);
+      font-family: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+    }
+
+    .lang-toggle button.active {
+      background: var(--teal);
+      color: var(--cream);
+    }
+
+    .nav-cta {
+      background: var(--coral);
+      color: var(--cream);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-family: 'Baloo 2';
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        position: fixed;
+        top: 73px;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 24px;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+        transform: translateY(-110%);
+        transition: transform .25s ease;
+        max-height: 70vh;
+        overflow-y: auto;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+      }
+
+      .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+      }
+
+      .menu-toggle svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .desktop-only-cta {
+        display: none;
+      }
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 70px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(242, 183, 5, 0.25), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(242, 92, 84, 0.18), transparent 40%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 7px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      font-family: 'Baloo 2';
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.06;
+      color: var(--teal-deep);
+    }
+
+    .hero h1 .accent {
+      color: var(--coral);
+    }
+
+    .hero p.lead {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      margin: 22px 0 30px;
+      max-width: 520px;
+      color: #33433f;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-family: 'Baloo 2';
+      font-size: 1rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--coral);
+      color: var(--cream);
+      box-shadow: 0 6px 0 #c2453e;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 8px 0 #c2453e;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--teal-deep);
+      border-color: var(--teal-deep);
+    }
+
+    .btn-ghost:hover {
+      background: var(--teal-deep);
+      color: var(--cream);
+    }
+
+    .hero-art {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-art img {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      transform: rotate(5deg);
+    }
+
+    /* ===== Trust strip ===== */
+    .trust {
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .trust .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: #5a6864;
+      font-weight: 600;
+    }
+
+    .trust .pill {
+      background: rgba(14, 59, 67, 0.08);
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+
+    /* ===== Section generic ===== */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      max-width: 680px;
+      margin: 0 0 50px;
+    }
+
+    .section-tag {
+      font-family: 'Baloo 2';
+      font-weight: 700;
+      color: var(--coral);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+      color: var(--teal-deep);
+      line-height: 1.15;
+    }
+
+    .section-head p {
+      margin-top: 14px;
+      font-size: 1.05rem;
+      color: #46554f;
+      line-height: 1.6;
+    }
+
+    /* ===== Services ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 30px rgba(14, 59, 67, 0.12);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      color: var(--teal-deep);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 0.96rem;
+      color: #4a5854;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ===== Map / process (treasure map signature) ===== */
+    .map-wrap {
+      position: relative;
+    }
+
+    .map-svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ===== Products ===== */
+    .products {
+      background: var(--teal-deep);
+    }
+
+    .products .section-tag {
+      color: var(--gold);
+    }
+
+    .products .section-head h2 {
+      color: var(--cream);
+    }
+
+    .products .section-head p {
+      color: rgba(251, 243, 228, 0.75);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .product-card {
+      background: var(--teal);
+      border-radius: 24px;
+      padding: 34px;
+      color: var(--cream);
+      border: 1px solid rgba(251, 243, 228, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .product-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Baloo 2';
+      font-weight: 800;
+      font-size: 1.3rem;
+    }
+
+    .badge-cb {
+      background: #db2777;
+      color: white;
+    }
+
+    .badge-bg {
+      background: #fdc700;
+      color: #733e0a;
+    }
+
+    .product-card h3 {
+      font-size: 1.5rem;
+    }
+
+    .product-card p {
+      color: rgba(251, 243, 228, 0.78);
+      line-height: 1.6;
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    .product-link {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-family: 'Baloo 2';
+      color: var(--gold);
+    }
+
+    .product-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform .15s ease;
+    }
+
+    .product-link:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ===== Stack ===== */
+    .stack-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .stack-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 12px 20px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-family: 'Baloo 2';
+      color: var(--teal-deep);
+      font-size: 0.95rem;
+    }
+
+    .stack-chip svg {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .stack-chip.core {
+      background: var(--teal-deep);
+      color: var(--cream);
+      border-color: var(--teal-deep);
+    }
+
+    /* ===== About / Founder ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .founder-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: 0 14px 30px rgba(14, 59, 67, 0.08);
+    }
+
+    .founder-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-family: 'Baloo 2';
+      font-weight: 800;
+      color: var(--gold);
+      font-size: 1.3rem;
+    }
+
+    .founder-card h3 {
+      font-size: 1.3rem;
+      color: var(--teal-deep);
+      margin-bottom: 4px;
+    }
+
+    .founder-role {
+      font-size: 0.88rem;
+      color: var(--coral);
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .founder-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .founder-stats div b {
+      display: block;
+      font-family: 'Baloo 2';
+      font-size: 1.5rem;
+      color: var(--teal-deep);
+    }
+
+    .founder-stats div span {
+      font-size: 0.78rem;
+      color: #5a6864;
+    }
+
+    .about-copy p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #3a4845;
+      margin: 0 0 18px;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .about-tag {
+      background: rgba(14, 59, 67, 0.08);
+      color: var(--teal-deep);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ===== CTA banner ===== */
+    .cta-banner {
+      background: var(--gold);
+      border-radius: 28px;
+      padding: 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner h2 {
+      color: var(--teal-deep);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      margin-bottom: 14px;
+    }
+
+    .cta-banner p {
+      color: #3c3209;
+      margin-bottom: 26px;
+      font-size: 1.05rem;
+    }
+
+    .cta-banner .btn-primary {
+      box-shadow: 0 6px 0 #8f3b35;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--teal-deep);
+      color: rgba(251, 243, 228, 0.75);
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    footer .brand {
+      color: var(--cream);
+    }
+
+    .footer-col h4 {
+      font-family: 'Baloo 2';
+      color: var(--cream);
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-col a {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.92rem;
+      color: rgba(251, 243, 228, 0.7);
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(251, 243, 228, 0.15);
+      padding-top: 24px;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* [data-en] {
+      display: none;
+    } */
+
+    /* html[data-lang="en"] [data-es] {
+      display: none;
+    }
+
+    html[data-lang="en"] [data-en] {
+      display: inline;
+    } */
+
+    html[data-lang="en"] [data-en-block] {
+      display: block;
+    }
+
+    html[data-lang="en"] [data-en-flex] {
+      display: flex;
+    }
+
+    html[data-lang="en"] [data-en-grid] {
+      display: grid;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art {
+        order: -1;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="nav wrap">
+      <div class="brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-cat-icon lucide-cat">
+          <path
+            d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z" />
+          <path d="M16 14v.5" />
+          <path d="M11.25 16.25h1.5L12 17l-.75-.75Z" />
+        </svg>
+        <span>Gatito Pirata</span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#nosotros" data-es>Nosotros</a><a href="#nosotros" data-en>About</a>
+        <a href="#servicios" data-es>Servicios</a><a href="#servicios" data-en>Services</a>
+        <a href="#productos" data-es>Productos</a><a href="#productos" data-en>Products</a>
+        <a href="#stack" data-es>Tecnología</a><a href="#stack" data-en>Tech</a>
+        <a href="#contacto" data-es>Contacto</a><a href="#contacto" data-en>Contact</a>
+        <div class="lang-toggle">
+          <button onclick="setLang('es')" class="lang-es active">ES</button>
+          <button onclick="setLang('en')" class="lang-en">EN</button>
+        </div>
+      </div>
+      <a href="#contacto" class="nav-cta desktop-only-cta" data-es>Hablemos</a>
+      <a href="#contacto" class="nav-cta desktop-only-cta" data-en>Let's talk</a>
+      <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"
+        aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0E3B43" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round" />
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <!-- <span class="eyebrow">🏴‍☠️ <span data-es>Lima, Perú</span><span data-en>Lima, Peru</span></span> -->
+        <h1 data-es>Saqueamos lo complicado.<br>Dejamos software <span class="accent">a flote</span>.</h1>
+        <h1 data-en>We plunder the complicated.<br>We leave software <span class="accent">seaworthy</span>.</h1>
+        <p class="lead" data-es>Somos un estudio de desarrollo web y SaaS en Lima. Construimos con Ruby on Rails y
+          React, y mantenemos vivos nuestros propios productos: CourseBook y BrickGestor.</p>
+        <p class="lead" data-en>A web development and SaaS studio based in Lima, Peru. We build
+          with Ruby on Rails and React — and we keep our own products alive and shipping: CourseBook and BrickGestor.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn btn-primary" data-es>Empezar un proyecto →</a>
+          <a href="#contacto" class="btn btn-primary" data-en>Start a project →</a>
+          <a href="#productos" class="btn btn-ghost" data-es>Ver productos</a>
+          <a href="#productos" class="btn btn-ghost" data-en>See products</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="./pulguin-2.jpeg" title="El es Pulguín" />
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="wrap">
+      <span class="pill" data-es>🌎 Equipo remoto, base en Lima</span>
+      <span class="pill" data-en>🌎 Remote team, based in Lima</span>
+      <span class="pill" data-es>⚓ +2 productos SaaS propios</span>
+      <span class="pill" data-en>⚓ 2 in-house SaaS products</span>
+      <span class="pill" data-es>🛠️ Ruby on Rails + React</span>
+      <span class="pill" data-en>🛠️ Ruby on Rails + React</span>
+    </div>
+  </div>
+
+  <section id="nosotros">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="founder-card">
+          <div class="founder-avatar">GP</div>
+          <h3>Gustavo Leon</h3>
+          <span class="founder-role" data-es>Fundador &amp; Full-Stack Developer</span>
+          <span class="founder-role" data-en>Founder &amp; Full-Stack Developer</span>
+          <p style="margin:0; font-size:0.95rem; color:#3a4845; line-height:1.6;" data-es>Más de 15 años construyendo
+            productos digitales en marketing, RR.HH., PropTech y SaaS, en equipos remotos de varios países.</p>
+          <p style="margin:0; font-size:0.95rem; color:#3a4845; line-height:1.6; display:none;" data-en>15+ years
+            building digital products across marketing, HR, PropTech and SaaS, on remote teams across several countries.
+          </p>
+          <div class="founder-stats">
+            <div><b>15+</b><span data-es>Años de experiencia</span><span data-en>Years of
+                experience</span></div>
+            <div><b>2</b><span data-es>Productos propios</span><span data-en>Own products</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-copy">
+          <span class="section-tag" data-es>La tripulación</span>
+          <span class="section-tag" data-en>The crew</span>
+          <h2 style="margin-bottom:18px;" data-es>Construido por gente que ya navegó estas aguas</h2>
+          <h2 style="margin-bottom:18px; display:none;" data-en>Built by people who've already sailed these waters</h2>
+          <p data-es>Gatito Pirata Technologies nace de quince años de experiencia construyendo software: desde el MVP
+            de uno de los primeros e-commerce en Facebook de Perú, hasta plataformas usadas por miles de usuarios en
+            startups de EE.UU. y Canadá.</p>
+          <p data-en>Gatito Pirata Technologies comes from fifteen years of hands-on software
+            building — from one of Peru's first Facebook-based e-commerce MVPs to platforms used by thousands across US
+            and Canadian startups.</p>
+          <p data-es>Hoy aplicamos esa misma experiencia a cada proyecto: arquitectura sólida desde el día uno, sin
+            sorpresas después del lanzamiento.</p>
+          <p data-en>Today we bring that same experience to every project: solid architecture from
+            day one, no surprises after launch.</p>
+          <div class="about-tags">
+            <span class="about-tag">Able · Staff Engineer</span>
+            <span class="about-tag">Yuhu · Senior Engineer</span>
+            <span class="about-tag">Runa HR · Head of Tech</span>
+            <span class="about-tag">CodePicnic · Co-founder &amp; CTO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag" data-es>La tripulación hace</span>
+        <span class="section-tag" data-en>What the crew does</span>
+        <h2 data-es>Dos formas de trabajar con nosotros</h2>
+        <h2 data-en>Two ways to work with us</h2>
+        <p data-es>Ya sea que necesites un producto a medida o quieras lanzar tu propio SaaS, navegamos el proyecto de
+          punta a punta.</p>
+        <p data-en>Whether you need a custom build or want to launch your own SaaS, we navigate
+          the project end to end.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+            <rect x="4" y="8" width="40" height="30" rx="4" fill="#0E3B43" />
+            <rect x="8" y="12" width="32" height="20" rx="2" fill="#FBF3E4" />
+            <rect x="16" y="40" width="16" height="3" rx="1.5" fill="#0E3B43" />
+            <circle cx="11" cy="10" r="1.3" fill="#F25C54" />
+            <circle cx="15" cy="10" r="1.3" fill="#F2B705" />
+          </svg>
+          <h3 data-es>Desarrollo web a medida</h3>
+          <h3 data-en>Custom web development</h3>
+          <p data-es>Sitios, paneles internos y aplicaciones a la medida de tu negocio, construidos con Rails y React
+            desde cero.</p>
+          <p data-en>Sites, internal dashboards and bespoke applications built for your business
+            with Rails and React from the ground up.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+            <rect x="6" y="6" width="36" height="36" rx="8" fill="#F2B705" />
+            <path d="M16 24l6 6 12-12" stroke="#15211F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+              fill="none" />
+          </svg>
+          <h3 data-es>Productos SaaS</h3>
+          <h3 data-en>SaaS products</h3>
+          <p data-es>Diseñamos, construimos y operamos productos de suscripción propios — y aplicamos lo aprendido a tu
+            proyecto.</p>
+          <p data-en>We design, build and operate our own subscription products — and bring that
+            experience to your project.</p>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="20" fill="#F25C54" />
+            <path d="M24 14v10l7 4" stroke="#FBF3E4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+              fill="none" />
+          </svg>
+          <h3 data-es>Soporte y mantenimiento</h3>
+          <h3 data-en>Support & maintenance</h3>
+          <p data-es>No desaparecemos al lanzar. Damos mantenimiento continuo, mejoras y soporte directo con el equipo
+            que construyó tu producto.</p>
+          <p data-en>We don't disappear at launch. Ongoing maintenance, improvements and direct
+            support from the team that built your product.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="productos" class="products">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag" data-es>El tesoro encontrado</span>
+        <span class="section-tag" data-en>Treasure we found</span>
+        <h2 data-es>Productos que construimos y usamos</h2>
+        <h2 data-en>Products we build and run</h2>
+        <p data-es>No solo escribimos código para otros: operamos nuestro propio software, todos los días.</p>
+        <p data-en>We don't just write code for others — we run our own software, every single
+          day.</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-badge badge-cb">CB</div>
+          <h3>CourseBook</h3>
+          <p data-es>Crea y vende cursos interactivos basados en texto. Convierte tu conocimiento en un curso que tus
+            estudiantes amarán.</p>
+          <p data-en>Create and sell interactive, text-based courses. Turn your expertise into a
+            course your students will love.</p>
+          <a href="https://coursebook.app/" target="_blank" rel="noopener" class="product-link">
+            <span data-es>Visitar coursebook.app</span><span data-en>Visit coursebook.app</span>
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+        <div class="product-card">
+          <div class="product-badge badge-bg">BG</div>
+          <h3>BrickGestor</h3>
+          <p data-es>Software simple e intuitivo de gestión de inventario, diseñado especialmente para fans adultos del
+            LEGO® (AFOLs).</p>
+          <p data-en>Simple and intuitive inventory management software, designed specially for
+            Adult Fans of LEGO® (AFOLs).</p>
+          <a href="https://brickgestor.app/" target="_blank" rel="noopener" class="product-link">
+            <span data-es>Visitar brickgestor.app</span><span data-en>Visit brickgestor.app</span>
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:30px;">
+        <span class="section-tag" data-es>Las herramientas a bordo</span>
+        <span class="section-tag" data-en>Tools on board</span>
+        <h2 data-es>Nuestro stack tecnológico</h2>
+        <h2 data-en>Our tech stack</h2>
+      </div>
+      <div class="stack-row">
+        <div class="stack-chip core">
+          <svg viewBox="0 0 24 24" fill="#F25C54">
+            <circle cx="12" cy="12" r="11" />
+          </svg>
+          Ruby on Rails
+        </div>
+        <div class="stack-chip core">
+          <svg viewBox="0 0 24 24" fill="#F2B705">
+            <circle cx="12" cy="12" r="11" />
+          </svg>
+          React
+        </div>
+        <div class="stack-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0E3B43" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="3" />
+            <path d="M8 12h8M8 16h5" stroke-linecap="round" />
+          </svg>
+          TypeScript
+        </div>
+        <div class="stack-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0E3B43" stroke-width="2">
+            <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+          </svg>
+          Inertia.js
+        </div>
+        <div class="stack-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0E3B43" stroke-width="2">
+            <path d="M3 9h18M9 3v18" />
+          </svg>
+          TailwindCSS
+        </div>
+        <div class="stack-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0E3B43" stroke-width="2">
+            <ellipse cx="12" cy="6" rx="8" ry="3" />
+            <path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6" />
+          </svg>
+          PostgreSQL
+        </div>
+        <div class="stack-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0E3B43" stroke-width="2">
+            <path
+              d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2" />
+          </svg>
+          Redis
+        </div>
+        <!-- <div class="stack-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0E3B43" stroke-width="2">
+            <path d="M4 12c2-3 4-3 6 0s4 3 6 0 4-3 4 0M4 18c2-3 4-3 6 0s4 3 6 0 4-3 4 0" />
+          </svg>
+          WebSockets
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-banner">
+        <h2 data-es>¿Listo para zarpar con tu proyecto?</h2>
+        <h2 data-en>Ready to set sail with your project?</h2>
+        <p data-es>Cuéntanos qué necesitas construir. Te respondemos en menos de 24 horas.</p>
+        <p data-en>Tell us what you need to build. We reply within 24 hours.</p>
+        <a href="mailto:hola@gatitopirata.tech" class="btn btn-primary" data-es>Escríbenos →</a>
+        <a href="mailto:hola@gatitopirata.tech" class="btn btn-primary" data-en>Get in touch →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contacto">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="brand"><span>🐱‍👤 Gatito Pirata Technologies</span></div>
+          <p style="margin-top:14px; max-width:320px; font-size:0.92rem;" data-es>Estudio de desarrollo web y SaaS con
+            sede en Lima, Perú.</p>
+          <p style="margin-top:14px; max-width:320px; font-size:0.92rem;" data-en>Web development
+            and SaaS studio based in Lima, Peru.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-es>Empresa</h4>
+          <h4 data-en>Company</h4>
+          <a href="#servicios" data-es>Servicios</a><a href="#servicios" data-en>Services</a>
+          <a href="#productos" data-es>Productos</a><a href="#productos" data-en>Products</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-es>Contacto</h4>
+          <h4 data-en>Contact</h4>
+          <a href="mailto:hola@gatitopirata.tech">hola@gatitopirata.tech</a>
+          <a href="#" data-es>Lima, Perú</a><a href="#" data-en>Lima, Peru</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-es>© 2026 Gatito Pirata Technologies. Todos los derechos reservados.</span>
+        <span data-en>© 2026 Gatito Pirata Technologies. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.setAttribute('data-lang', lang);
+      // document.querySelectorAll('[data-es]').forEach(element => {
+      //   element.setAttribute('', 'true')
+      //   el.style.display = lang === 'es' ? '' : 'none';
+      // });
+      // document.querySelectorAll('[data-en]').forEach(el => {
+      //   el.style.display = lang === 'en' ? '' : 'none';
+      // });
+      document.querySelectorAll('.lang-es').forEach(b => b.classList.toggle('active', lang === 'es'));
+      document.querySelectorAll('.lang-en').forEach(b => b.classList.toggle('active', lang === 'en'));
+    }
+  </script>
+</body>
+
+</html>
